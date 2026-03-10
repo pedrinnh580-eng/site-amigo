@@ -1,0 +1,8 @@
+
+INSTRUÇÕES
+
+1. Coloque seu vídeo na mesma pasta do site.
+2. O nome do vídeo deve ser:
+VID-20260309-WA0049~2.mp4
+
+3. Abra o arquivo index.html no navegador.
