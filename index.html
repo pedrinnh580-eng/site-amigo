@@ -143,26 +143,6 @@ text-decoration:none;
 font-weight:bold;
 }
 
-.notification{
-position:fixed;
-bottom:100px;
-left:20px;
-background:#1a1a3a;
-padding:15px;
-border-radius:8px;
-display:none;
-}
-
-.chat{
-position:fixed;
-bottom:20px;
-left:20px;
-background:#1a1a3a;
-padding:15px;
-border-radius:10px;
-width:220px;
-}
-
 footer{
 text-align:center;
 padding:30px;
@@ -185,7 +165,7 @@ justify-content:center;
 background:#1a1a3a;
 padding:30px;
 border-radius:10px;
-max-width:400px;
+max-width:450px;
 text-align:center;
 }
 
@@ -236,19 +216,19 @@ cursor:pointer;
 
 <div class="box" onclick="abrir('mercado')">
 <h3>💰 Mercado</h3>
-<p>5% de desconto em carnes, arroz, feijão e leite.</p>
+<p>5% de desconto em alimentos.</p>
 <button class="info-btn">Ver detalhes</button>
 </div>
 
 <div class="box" onclick="abrir('farmacia')">
 <h3>💊 Farmácias</h3>
-<p>Descontos em drogarias e medicamentos.</p>
+<p>Descontos nas principais redes do Brasil.</p>
 <button class="info-btn">Ver detalhes</button>
 </div>
 
 <div class="box" onclick="abrir('saude')">
 <h3>🏥 Saúde</h3>
-<p>Consultas médicas e exames com desconto.</p>
+<p>Consultas e exames com desconto.</p>
 <button class="info-btn">Ver detalhes</button>
 </div>
 
@@ -258,28 +238,7 @@ cursor:pointer;
 <button class="info-btn">Ver detalhes</button>
 </div>
 
-<div class="box" onclick="abrir('internacional')">
-<h3>🌎 Internacional</h3>
-<p>Aceito no Brasil e exterior.</p>
-<button class="info-btn">Ver detalhes</button>
-</div>
-
-<div class="box" onclick="abrir('app')">
-<h3>📱 Aplicativo</h3>
-<p>Controle de compras e limite pelo app.</p>
-<button class="info-btn">Ver detalhes</button>
-</div>
-
 </section>
-
-<div class="video">
-<h2>Conheça o Cartão +Amigo</h2>
-
-<video width="320" height="180" controls autoplay muted style="border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.5);">
-<source src="VID-20260309-WA0049~2.mp4" type="video/mp4">
-</video>
-
-</div>
 
 <form id="form">
 
@@ -299,13 +258,6 @@ cursor:pointer;
 <button>QUERO MEU CARTÃO</button>
 
 </form>
-
-<div class="notification" id="notify"></div>
-
-<div class="chat">
-💬 Olá!<br>
-Posso ajudar você a pedir seu Cartão +Amigo?
-</div>
 
 <a class="whatsapp" href="https://wa.me/5544997187738?text=Olá%20quero%20pedir%20o%20Cartão%20+Amigo">
 WhatsApp
@@ -331,33 +283,64 @@ let titulo=document.getElementById("titulo");
 let texto=document.getElementById("texto");
 
 if(tipo=="mercado"){
-titulo.innerText="💰 Desconto em Mercados";
-texto.innerText="Use seu Cartão +Amigo em mercados parceiros e receba até 5% de desconto em produtos essenciais.";
+titulo.innerText="💰 Mercado";
+texto.innerText="Descontos em alimentos e produtos essenciais em mercados parceiros.";
 }
 
 if(tipo=="farmacia"){
-titulo.innerText="💊 Descontos em Farmácias";
-texto.innerText="Economize em medicamentos e produtos de saúde nas drogarias parceiras.";
+titulo.innerText="💊 Você Bem Farmácias";
+texto.innerText=`Descontos em medicamentos para toda a família.
+
+Redes participantes:
+Drogaria São Paulo
+Drogasil
+Pague Menos
+Droga Raia
+Pacheco
+Extrafarma
+Drogal
+
+Como usar:
+1. Desbloqueie o Cartão +Amigo Afinz
+2. Vá até uma farmácia credenciada
+3. Informe seu CPF no balcão
+
+Pronto! Você já economiza em medicamentos.`;
 }
 
 if(tipo=="saude"){
-titulo.innerText="🏥 Benefícios de Saúde";
-texto.innerText="Consultas médicas, exames e clínicas com valores reduzidos.";
+titulo.innerText="🏥 Você Bem Saúde";
+texto.innerText=`Consultas e exames com desconto.
+
+Pelo APP Tem Saúde Digital:
+1. Baixe o aplicativo
+2. Escolha consulta ou exame
+3. Selecione especialidade e horário
+4. Confirme o agendamento
+
+Telefone:
+0800 836 8836
+
+WhatsApp:
+(11) 4000-1640
+
+Benefício válido para titular e familiares.`;
 }
 
 if(tipo=="educacao"){
-titulo.innerText="🎓 Educação";
-texto.innerText="Cursos e faculdades com até 80% de desconto.";
-}
+titulo.innerText="🎓 Você Bem Educação";
+texto.innerText=`Cursos com até 80% de desconto.
 
-if(tipo=="internacional"){
-titulo.innerText="🌎 Uso Internacional";
-texto.innerText="Utilize o Cartão +Amigo em compras no Brasil e no exterior.";
-}
+Como contratar:
 
-if(tipo=="app"){
-titulo.innerText="📱 Aplicativo";
-texto.innerText="Controle limite, compras e benefícios diretamente pelo aplicativo.";
+1. Acesse:
+https://winn.jgclass.com.br/vocebemeducacao/
+
+2. Escolha o curso
+3. Clique em comprar
+4. Informe quem será o estudante
+
+Começar a estudar é muito fácil!`;
 }
 
 document.getElementById("modal").style.display="flex";
