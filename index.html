@@ -100,6 +100,11 @@ font-weight:bold;
 cursor:pointer;
 }
 
+.video{
+text-align:center;
+padding:40px;
+}
+
 form{
 background:#171733;
 padding:35px;
@@ -235,26 +240,26 @@ cursor:pointer;
 
 </section>
 
-<form id="form" onsubmit="enviarWhats(event)">
+<form id="form">
 
 <h2>Solicite seu Cartão</h2>
 
-<input id="nome" placeholder="Nome completo" required>
-<input id="cpf" placeholder="CPF" required>
-<input id="nascimento" placeholder="Data de nascimento" required>
-<input id="telefone" placeholder="Telefone / WhatsApp" required>
-<input id="cep" placeholder="CEP" required>
-<input id="rua" placeholder="Rua" required>
-<input id="numero" placeholder="Número" required>
-<input id="referencia" placeholder="Ponto de referência">
+<input placeholder="Nome completo">
+<input placeholder="CPF">
+<input placeholder="Data de nascimento">
+<input placeholder="Telefone / WhatsApp">
+<input placeholder="CEP">
+<input placeholder="Rua">
+<input placeholder="Número">
+<input placeholder="Ponto de referência">
 
 <br><br>
 
-<button type="submit">QUERO MEU CARTÃO</button>
+<button>QUERO MEU CARTÃO</button>
 
 </form>
 
-<a class="whatsapp" href="https://wa.me/5544997187738">
+<a class="whatsapp" href="https://wa.me/5544997187738?text=Olá%20quero%20pedir%20o%20Cartão%20+Amigo">
 WhatsApp
 </a>
 
@@ -284,17 +289,58 @@ texto.innerText="Descontos em alimentos e produtos essenciais em mercados parcei
 
 if(tipo=="farmacia"){
 titulo.innerText="💊 Você Bem Farmácias";
-texto.innerText="Descontos em medicamentos nas principais redes do Brasil.";
+texto.innerText=`Descontos em medicamentos para toda a família.
+
+Redes participantes:
+Drogaria São Paulo
+Drogasil
+Pague Menos
+Droga Raia
+Pacheco
+Extrafarma
+Drogal
+
+Como usar:
+1. Desbloqueie o Cartão +Amigo Afinz
+2. Vá até uma farmácia credenciada
+3. Informe seu CPF no balcão
+
+Pronto! Você já economiza em medicamentos.`;
 }
 
 if(tipo=="saude"){
 titulo.innerText="🏥 Você Bem Saúde";
-texto.innerText="Consultas, exames e clínicas com valores reduzidos.";
+texto.innerText=`Consultas e exames com desconto.
+
+Pelo APP Tem Saúde Digital:
+1. Baixe o aplicativo
+2. Escolha consulta ou exame
+3. Selecione especialidade e horário
+4. Confirme o agendamento
+
+Telefone:
+0800 836 8836
+
+WhatsApp:
+(11) 4000-1640
+
+Benefício válido para titular e familiares.`;
 }
 
 if(tipo=="educacao"){
 titulo.innerText="🎓 Você Bem Educação";
-texto.innerText="Cursos e capacitações com até 80% de desconto.";
+texto.innerText=`Cursos com até 80% de desconto.
+
+Como contratar:
+
+1. Acesse:
+https://winn.jgclass.com.br/vocebemeducacao/
+
+2. Escolha o curso
+3. Clique em comprar
+4. Informe quem será o estudante
+
+Começar a estudar é muito fácil!`;
 }
 
 document.getElementById("modal").style.display="flex";
@@ -303,39 +349,6 @@ document.getElementById("modal").style.display="flex";
 
 function fechar(){
 document.getElementById("modal").style.display="none";
-}
-
-function enviarWhats(event){
-
-event.preventDefault();
-
-let nome = document.getElementById("nome").value;
-let cpf = document.getElementById("cpf").value;
-let nascimento = document.getElementById("nascimento").value;
-let telefone = document.getElementById("telefone").value;
-let cep = document.getElementById("cep").value;
-let rua = document.getElementById("rua").value;
-let numero = document.getElementById("numero").value;
-let referencia = document.getElementById("referencia").value;
-
-let mensagem =
-`Olá, quero solicitar o Cartão +Amigo
-
-Nome: ${nome}
-CPF: ${cpf}
-Nascimento: ${nascimento}
-Telefone: ${telefone}
-
-Endereço
-CEP: ${cep}
-Rua: ${rua}
-Número: ${numero}
-Referência: ${referencia}`;
-
-let url = "https://wa.me/5544997187738?text=" + encodeURIComponent(mensagem);
-
-window.open(url,'_blank');
-
 }
 
 </script>
