@@ -1,679 +1,586 @@
-<!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartão +amigo 💛 | AuraHome</title>
-    
-    <!-- Google Fonts: Outfit -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS (CDN) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            900: '#050814',
-                            800: '#0a0e2a',
-                            700: '#0d1a5c',
-                            accent: '#FBBF24', // yellow-400
-                            accentHover: '#F59E0B' // yellow-500
-                        }
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'float-delayed': 'float 6s ease-in-out 3s infinite',
-                        'blob': 'blob 7s infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards'
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 10px rgba(251, 191, 36, 0.2)' },
-                            '100%': { boxShadow: '0 0 30px rgba(251, 191, 36, 0.6)' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(40px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        body {
-            background-color: #050814;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        /* Glassmorphism utilities */
-        .glass {
-            background: rgba(13, 26, 92, 0.3);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(251, 191, 36, 0.15);
-        }
-        
-        .glass-card {
-            background: linear-gradient(135deg, rgba(13, 26, 92, 0.6) 0%, rgba(10, 19, 64, 0.8) 100%);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(251, 191, 36, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        .glass-card:hover {
-            border-color: rgba(251, 191, 36, 0.5);
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px 0 rgba(251, 191, 36, 0.15);
-        }
-
-        /* Scroll Reveal base state */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #050814;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #FBBF24;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #F59E0B;
-        }
-    </style>
-    <!-- Icons (Lucide) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body class="antialiased selection:bg-brand-accent selection:text-black font-sans relative">
-
-    <!-- Ambient Glowing Orbs Background -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-accent/10 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-blob"></div>
-        <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-brand-accent/5 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-blob animation-delay-4000"></div>
+<!doctype html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NPS PRIMEX</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    .gold { color: #C9A84C; }
+    .bg-gold { background-color: #C9A84C; }
+    .border-gold { border-color: #C9A84C; }
+    .cart-sidebar { transform: translateX(100%); transition: transform 0.3s ease; }
+    .cart-sidebar.open { transform: translateX(0); }
+    .overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .overlay.open { opacity: 1; pointer-events: auto; }
+    .product-card { transition: transform 0.2s, box-shadow 0.2s; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.3); }
+    .category-section { scroll-margin-top: 80px; }
+    .mobile-menu { transform: translateX(-100%); transition: transform 0.3s ease; }
+    .mobile-menu.open { transform: translateX(0); }
+    #back-to-top { opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+    #back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .catalog-card { transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
+    .catalog-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(201,168,76,0.2); }
+    .gender-overlay { opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+    .gender-overlay.active { opacity: 1; pointer-events: auto; }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root" class="min-h-screen w-full bg-black text-white">
+  <nav data-template-id="navbar" class="canva-header fixed top-0 left-0 right-0 z-50 border-b border-neutral-800 backdrop-blur-md bg-black/90">
+   <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between"><button id="mobile-menu-toggle" class="md:hidden p-2" aria-label="Menu"><i data-lucide="menu" class="w-6 h-6 gold"></i></button>
+    <h1 data-template-id="logo" class="canva-text font-display text-2xl tracking-wider gold cursor-pointer"></h1>
+    <div class="hidden md:flex gap-6 items-center"></div><button id="cart-toggle" class="relative p-2" aria-label="Abrir carrinho"><i data-lucide="shopping-bag" class="w-6 h-6 gold"></i><span id="cart-count" class="absolute -top-1 -right-1 bg-gold text-black text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span></button>
+   </div>
+  </nav>
+  <div id="mobile-menu-overlay" class="overlay fixed inset-0 bg-black/60 z-40"></div>
+  <aside id="mobile-menu" class="mobile-menu fixed top-0 left-0 h-full w-64 bg-neutral-950 border-r border-neutral-800 z-40 pt-20 px-6 flex flex-col gap-4"></aside>
+  <header class="relative pt-16" style="height: calc(70 * min(var(--vh, 1vh), 1vh));"><img data-template-id="hero-img" class="canva-image absolute inset-0 w-full h-full object-cover" loading="lazy">
+   <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+   <div class="relative z-10 flex flex-col items-center justify-end h-full pb-16 px-4 text-center">
+    <h2 data-template-id="hero-title" class="canva-text font-display gold"></h2>
+    <p data-template-id="hero-subtitle" class="canva-text mt-3 text-neutral-300 max-w-lg"></p><a href="#catalog" data-template-id="hero-cta" class="canva-button mt-6 inline-block bg-gold text-black font-bold px-8 py-3 uppercase tracking-widest text-sm hover:brightness-110 transition"></a>
+   </div>
+  </header>
+  <section data-template-id="benefits-section" class="canva-section border-y border-neutral-800 py-6">
+   <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div class="flex flex-col items-center gap-2">
+     <i data-lucide="truck" class="w-6 h-6 gold"></i>
+     <p data-template-id="benefit-1" class="canva-text text-xs uppercase tracking-widest text-neutral-300"></p>
     </div>
-
-    <div class="relative z-10 flex flex-col min-h-screen">
-        
-        <!-- Navbar -->
-        <header class="sticky top-0 z-50 glass transition-all duration-300" id="navbar">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-20">
-                    <div class="flex items-center gap-2">
-                        <a href="#" class="flex items-center gap-1 group">
-                            <span class="text-2xl font-black text-white tracking-tight group-hover:text-gray-200 transition-colors">Cartão</span>
-                            <span class="text-2xl font-black text-brand-accent group-hover:text-brand-accentHover transition-colors">+amigo</span>
-                            <span class="text-2xl animate-pulse">💛</span>
-                        </a>
-                    </div>
-
-                    <!-- Desktop Menu -->
-                    <nav class="hidden lg:flex items-center gap-8">
-                        <a href="#beneficios" class="text-sm font-medium text-gray-300 hover:text-brand-accent transition-colors">Benefícios</a>
-                        <a href="#farmacias" class="text-sm font-medium text-gray-300 hover:text-brand-accent transition-colors">Farmácias</a>
-                        <a href="#saude" class="text-sm font-medium text-gray-300 hover:text-brand-accent transition-colors">Saúde</a>
-                        <a href="#educacao" class="text-sm font-medium text-gray-300 hover:text-brand-accent transition-colors">Educação</a>
-                        <a href="#redes" class="text-sm font-medium text-gray-300 hover:text-brand-accent transition-colors">Redes Sociais</a>
-                    </nav>
-
-                    <div class="hidden sm:flex items-center">
-                        <a href="tel:40901730" class="flex items-center gap-2 px-6 py-2.5 bg-brand-accent hover:bg-brand-accentHover text-black font-bold text-sm rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(251,191,36,0.4)] hover:shadow-[0_0_25px_rgba(251,191,36,0.6)] hover:scale-105">
-                            <i data-lucide="phone" class="w-4 h-4"></i>
-                            Central: 4090-1730
-                        </a>
-                    </div>
-
-                    <!-- Mobile Menu Button -->
-                    <button class="lg:hidden p-2 text-white hover:text-brand-accent transition-colors" id="mobile-menu-btn">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Menu Dropdown -->
-            <div class="lg:hidden absolute top-full left-0 w-full glass border-t border-brand-accent/10 transition-all duration-300 hidden origin-top" id="mobile-menu">
-                <div class="px-4 pt-2 pb-6 space-y-1 flex flex-col">
-                    <a href="#beneficios" class="block px-3 py-3 rounded-md text-base font-medium text-gray-200 hover:bg-brand-accent/10 hover:text-brand-accent">Benefícios</a>
-                    <a href="#farmacias" class="block px-3 py-3 rounded-md text-base font-medium text-gray-200 hover:bg-brand-accent/10 hover:text-brand-accent">Farmácias</a>
-                    <a href="#saude" class="block px-3 py-3 rounded-md text-base font-medium text-gray-200 hover:bg-brand-accent/10 hover:text-brand-accent">Saúde</a>
-                    <a href="#educacao" class="block px-3 py-3 rounded-md text-base font-medium text-gray-200 hover:bg-brand-accent/10 hover:text-brand-accent">Educação</a>
-                    <a href="#redes" class="block px-3 py-3 rounded-md text-base font-medium text-gray-200 hover:bg-brand-accent/10 hover:text-brand-accent">Redes Sociais</a>
-                    <a href="tel:40901730" class="mt-4 flex flex-col items-center justify-center gap-1 px-4 py-2.5 bg-brand-accent text-black font-bold rounded-xl w-full">
-                        <div class="flex items-center gap-2"><i data-lucide="phone" class="w-5 h-5"></i> Central do Cartão</div>
-                        <span class="text-xs font-black opacity-80">4090-1730</span>
-                    </a>
-                </div>
-            </div>
-        </header>
-
-        <main class="flex-1">
-            <!-- Hero Section -->
-            <section class="relative pt-20 pb-32 lg:pt-32 lg:pb-40 overflow-hidden">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative grid lg:grid-cols-2 gap-16 items-center">
-                    
-                    <!-- Text Content -->
-                    <div class="space-y-8 text-center lg:text-left z-10 reveal">
-                        <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-accent/10 border border-brand-accent/30 rounded-full animate-glow">
-                            <i data-lucide="star" class="w-4 h-4 text-brand-accent fill-brand-accent"></i>
-                            <span class="text-brand-accent text-sm font-bold tracking-widest uppercase">Super Oferta!</span>
-                        </div>
-                        
-                        <div class="space-y-4">
-                            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-tight">
-                                Cartão <span class="text-brand-accent bg-clip-text text-transparent bg-gradient-to-r from-brand-accent to-yellow-200">+amigo</span> 💛
-                            </h1>
-                            <h2 class="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-accent to-amber-200 uppercase tracking-wide">
-                                Descontos, Saúde e Educação
-                            </h2>
-                            <p class="text-lg text-blue-200/80 font-medium max-w-xl mx-auto lg:mx-0">
-                                Tudo o que você e sua família precisam em um único lugar.
-                            </p>
-                        </div>
-
-                        <!-- Highlights Grid -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                            <div class="flex items-center gap-3 glass px-4 py-3 rounded-xl hover:border-brand-accent/40 transition-colors">
-                                <i data-lucide="zap" class="w-5 h-5 text-brand-accent"></i>
-                                <span class="text-sm font-semibold text-gray-200">Aprovação Super Rápida</span>
-                            </div>
-                            <div class="flex items-center gap-3 glass px-4 py-3 rounded-xl hover:border-brand-accent/40 transition-colors">
-                                <i data-lucide="globe" class="w-5 h-5 text-brand-accent"></i>
-                                <span class="text-sm font-semibold text-gray-200">Visa Internacional</span>
-                            </div>
-                            <div class="flex items-center gap-3 glass px-4 py-3 rounded-xl hover:border-brand-accent/40 transition-colors">
-                                <i data-lucide="wallet" class="w-5 h-5 text-brand-accent"></i>
-                                <span class="text-sm font-semibold text-gray-200">Parcelamento Exclusivo</span>
-                            </div>
-                            <div class="flex items-center gap-3 glass px-4 py-3 rounded-xl hover:border-brand-accent/40 transition-colors">
-                                <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-accent"></i>
-                                <span class="text-sm font-semibold text-gray-200">+5% Desc. Supermercados</span>
-                            </div>
-                        </div>
-
-                        <div class="pt-6">
-                            <a href="https://wa.me/5544997187738" target="_blank" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-accent to-amber-400 text-black font-black text-lg rounded-full shrink-0 transition-transform hover:scale-105 shadow-[0_0_30px_rgba(251,191,36,0.3)]">
-                                <i data-lucide="message-circle" class="w-6 h-6"></i>
-                                Peça o seu: (44) 99718-7738
-                            </a>
-                            <p class="text-xs text-center lg:text-left text-gray-400 mt-4">*Sem anuidade para colaboradores</p>
-                        </div>
-                    </div>
-
-                    <!-- 3D Card Visual Object -->
-                    <div class="relative z-10 flex justify-center reveal" style="transition-delay: 200ms;">
-                        <!-- Backdrop Glow for Card -->
-                        <div class="absolute inset-0 bg-brand-accent/20 blur-[100px] rounded-full scale-110"></div>
-                        
-                        <div class="relative w-[340px] h-[214px] sm:w-[400px] sm:h-[250px] rounded-[24px] bg-gradient-to-br from-[#1a3a8f] via-[#0d1f6b] to-[#04081c] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border  border-white/10 p-6 flex flex-col justify-between animate-float overflow-hidden group">
-                            <!-- Card Glossy reflection -->
-                            <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-                            
-                            <div class="flex justify-between items-start relative z-10">
-                                <div>
-                                    <p class="text-white/50 text-[10px] uppercase font-bold tracking-[0.3em]">Credit Card</p>
-                                    <p class="text-white font-medium text-sm tracking-widest mt-1">afinz</p>
-                                </div>
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-accent to-amber-600 flex items-center justify-center shadow-[0_0_15px_rgba(251,191,36,0.5)]">
-                                    <i data-lucide="wifi" class="text-black w-5 h-5 rotate-90"></i>
-                                </div>
-                            </div>
-                            
-                            <div class="relative z-10">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Card Chip" class="w-12 h-auto opacity-0 hidden" />
-                                <div class="w-12 h-9 bg-yellow-400/80 rounded-md border border-yellow-200/50 opacity-80 mb-4 mix-blend-overlay"></div>
-                                <p class="text-white/90 font-mono tracking-[0.25em] text-lg sm:text-xl drop-shadow-md">
-                                    •••• •••• •••• 1234
-                                </p>
-                                <div class="flex justify-between items-end mt-4">
-                                    <div>
-                                        <p class="text-white/50 text-[10px] uppercase tracking-wider mb-1">Cardholder</p>
-                                        <span class="text-white text-base font-bold tracking-wide uppercase">+amigo 💛</span>
-                                    </div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" alt="Visa" class="h-6 brightness-0 invert opacity-90 drop-shadow-lg">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Floating Badges -->
-                        <div class="absolute -top-6 -right-2 sm:-right-8 bg-brand-accent text-black font-black text-xs px-4 py-2 rounded-xl shadow-xl animate-float-delayed border border-yellow-300">
-                            🌍 INTERNACIONAL
-                        </div>
-                        <div class="absolute -bottom-6 -left-2 sm:-left-8 glass border border-brand-accent/50 text-white text-xs px-4 py-2 rounded-xl shadow-xl animate-float">
-                            ⚡ APROVAÇÃO RÁPIDA
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Marquee Redes -->
-            <div class="py-6 border-y border-brand-accent/10 bg-black/40 backdrop-blur-sm overflow-hidden flex whitespace-nowrap reveal">
-                <div class="animate-[marquee_20s_linear_infinite] flex gap-12 items-center text-gray-400 font-medium text-sm sm:text-base tracking-widest uppercase">
-                    <span>Paraná Supermercados</span>
-                    <span class="text-brand-accent">•</span>
-                    <span>Boa Supermercados</span>
-                    <span class="text-brand-accent">•</span>
-                    <span>Avenida Supermercados</span>
-                    <span class="text-brand-accent">•</span>
-                    <span>Amigão Supermercados</span>
-                    <span class="text-brand-accent">•</span>
-                    <!-- Duplicate for infinite loop illusion -->
-                    <span>Paraná Supermercados</span>
-                    <span class="text-brand-accent">•</span>
-                    <span>Boa Supermercados</span>
-                    <span class="text-brand-accent">•</span>
-                    <span>Avenida Supermercados</span>
-                    <span class="text-brand-accent">•</span>
-                    <span>Amigão Supermercados</span>
-                </div>
-            </div>
-
-            <!-- Benefícios Card Grid -->
-            <section id="beneficios" class="py-24 relative z-10 scroll-mt-20">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-16 reveal">
-                        <span class="text-brand-accent text-sm font-bold uppercase tracking-widest">Os Melhores</span>
-                        <h2 class="text-4xl lg:text-5xl font-black text-white mt-2">
-                            Benefícios <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-amber-200">Premium</span>
-                        </h2>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Card 1 -->
-                        <div class="glass-card rounded-2xl p-6 transition-all duration-300 reveal group">
-                            <div class="w-14 h-14 rounded-2xl bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-accent/20 transition-all">
-                                <i data-lucide="rocket" class="w-7 h-7 text-brand-accent"></i>
-                            </div>
-                            <h3 class="text-white font-bold text-lg mb-3">Aprovação Rápida</h3>
-                            <p class="text-blue-200/70 text-sm leading-relaxed">Avaliação instantânea com limite liberado na hora para você não perder tempo.</p>
-                        </div>
-                        <!-- Card 2 -->
-                        <div class="glass-card rounded-2xl p-6 transition-all duration-300 reveal group" style="transition-delay: 100ms;">
-                            <div class="w-14 h-14 rounded-2xl bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-accent/20 transition-all">
-                                <i data-lucide="globe" class="w-7 h-7 text-brand-accent"></i>
-                            </div>
-                            <h3 class="text-white font-bold text-lg mb-3">Visa Internacional</h3>
-                            <p class="text-blue-200/70 text-sm leading-relaxed">Aceito em milhões de estabelecimentos físicos e virtuais no Brasil e no mundo.</p>
-                        </div>
-                        <!-- Card 3 -->
-                        <div class="glass-card rounded-2xl p-6 transition-all duration-300 reveal group" style="transition-delay: 200ms;">
-                            <div class="w-14 h-14 rounded-2xl bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-accent/20 transition-all">
-                                <i data-lucide="heart" class="w-7 h-7 text-brand-accent"></i>
-                            </div>
-                            <h3 class="text-white font-bold text-lg mb-3">Você Bem Afinz</h3>
-                            <p class="text-blue-200/70 text-sm leading-relaxed">Descontos incríveis de até 70% em farmácias, saúde e clínicas educacionais.</p>
-                        </div>
-                        <!-- Card 4 -->
-                        <div class="glass-card rounded-2xl p-6 transition-all duration-300 reveal group" style="transition-delay: 300ms;">
-                            <div class="w-14 h-14 rounded-2xl bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-accent/20 transition-all">
-                                <i data-lucide="clock" class="w-7 h-7 text-brand-accent"></i>
-                            </div>
-                            <h3 class="text-white font-bold text-lg mb-3">Prazo e Parcelamento</h3>
-                            <p class="text-blue-200/70 text-sm leading-relaxed">Até 40 dias para pagar e possibilidade de parcelar contas de consumo pelo app.</p>
-                        </div>
-                    </div>
-
-                    <!-- Promo Highlight -->
-                    <div class="mt-12 group reveal">
-                        <div class="bg-gradient-to-r from-[#1E293B] to-[#0F172A] border border-brand-accent/30 rounded-3xl p-[2px] overflow-hidden relative shadow-[0_0_40px_rgba(251,191,36,0.1)]">
-                            <!-- Animated gradient bg -->
-                            <div class="absolute inset-0 bg-gradient-to-r from-brand-accent via-orange-500 to-yellow-300 opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-                            
-                            <div class="bg-[#0A0F24] rounded-[22px] px-8 py-10 lg:p-12 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 h-full">
-                                <div class="text-center lg:text-left">
-                                    <div class="inline-block bg-brand-accent text-black font-black text-xs px-3 py-1 rounded-full mb-4">VANTAGEM EXCLUSIVA</div>
-                                    <h3 class="text-3xl sm:text-4xl font-black text-white leading-tight">Ganhe <span class="text-brand-accent">+5% de desconto</span> em Supermercados</h3>
-                                    <p class="text-gray-400 mt-3 max-w-xl text-sm sm:text-base">Válido para carnes, aves, suínos, linguiças, leite, arroz e feijão nas redes parceiras.</p>
-                                </div>
-                                <div class="shrink-0">
-                                    <div class="w-40 h-40 rounded-full border-[6px] border-brand-accent/20 bg-brand-accent/5 flex items-center justify-center shadow-[0_0_30px_rgba(251,191,36,0.2)]">
-                                        <div class="text-center">
-                                            <span class="block text-4xl font-black text-brand-accent">+5%</span>
-                                            <span class="block text-xs font-bold text-white uppercase tracking-wider mt-1">Cashback<br/>Direto</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Divider -->
-            <div class="w-full h-px bg-gradient-to-r from-transparent via-brand-accent/20 to-transparent"></div>
-
-            <!-- Farmácias -->
-            <section id="farmacias" class="py-24 relative z-10 scroll-mt-20">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid lg:grid-cols-2 gap-16 items-center">
-                        <div class="order-2 lg:order-1 reveal">
-                            <div class="glass-card rounded-3xl p-8 border-l-[4px] border-l-green-400 border-t-0 border-r-0 border-b-0 shadow-2xl relative overflow-hidden group">
-                                <div class="absolute -right-10 -top-10 w-40 h-40 bg-green-500/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
-                                <h4 class="text-green-400 font-bold text-sm uppercase tracking-widest mb-6 border-b border-green-500/20 pb-4">Redes Credenciadas Nacionais</h4>
-                                <div class="grid grid-cols-2 gap-4 relative z-10">
-                                    <div class="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3 border border-white/5 hover:bg-white/10 transition-colors">
-                                        <div class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]"></div>
-                                        <span class="text-white font-medium text-sm">Drogaria SP</span>
-                                    </div>
-                                    <div class="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3 border border-white/5 hover:bg-white/10 transition-colors">
-                                        <div class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]"></div>
-                                        <span class="text-white font-medium text-sm">Drogasil</span>
-                                    </div>
-                                    <div class="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3 border border-white/5 hover:bg-white/10 transition-colors">
-                                        <div class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]"></div>
-                                        <span class="text-white font-medium text-sm">PagueMenos</span>
-                                    </div>
-                                    <div class="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3 border border-white/5 hover:bg-white/10 transition-colors">
-                                        <div class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]"></div>
-                                        <span class="text-white font-medium text-sm">Droga Raia</span>
-                                    </div>
-                                    <div class="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3 border border-white/5 hover:bg-white/10 transition-colors">
-                                        <div class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]"></div>
-                                        <span class="text-white font-medium text-sm">Pacheco</span>
-                                    </div>
-                                    <div class="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3 border border-white/5 hover:bg-white/10 transition-colors">
-                                        <div class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]"></div>
-                                        <span class="text-white font-medium text-sm">Extrafarma</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="order-1 lg:order-2 reveal">
-                            <div class="flex items-center gap-4 mb-6">
-                                <div class="w-14 h-14 rounded-2xl bg-green-500/10 border border-green-500/30 flex items-center justify-center">
-                                    <i data-lucide="pill" class="w-7 h-7 text-green-400"></i>
-                                </div>
-                                <h2 class="text-3xl lg:text-4xl font-black text-white">Você Bem <span class="text-green-400">Farmácias</span></h2>
-                            </div>
-                            <p class="text-blue-100/80 text-lg leading-relaxed mb-8">
-                                Cuide de quem você ama e economize na rede credenciada de farmácias. Os descontos são aplicados automaticamente em toda a rede.
-                            </p>
-                            
-                            <ul class="space-y-5">
-                                <li class="flex items-start gap-4">
-                                    <div class="w-8 h-8 rounded-full bg-brand-accent flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(251,191,36,0.3)] mt-1">
-                                        <i data-lucide="check" class="w-5 h-5 text-black"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-white font-bold text-lg">Ativação Instantânea</h4>
-                                        <p class="text-blue-200/60 text-sm mt-1">Ativo assim que você desbloqueia o cartão +amigo.</p>
-                                    </div>
-                                </li>
-                                <li class="flex items-start gap-4">
-                                    <div class="w-8 h-8 rounded-full bg-brand-accent flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(251,191,36,0.3)] mt-1">
-                                        <i data-lucide="check" class="w-5 h-5 text-black"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-white font-bold text-lg">Uso Simplificado</h4>
-                                        <p class="text-blue-200/60 text-sm mt-1">Ao chegar na farmácia, basta informar o seu CPF no balcão de atendimento.</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Saúde & Educação Split Container -->
-            <section class="py-24 relative z-10 bg-gradient-to-b from-transparent via-[#0a0f2a] to-transparent">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
-                    
-                    <!-- Saúde -->
-                    <div id="saude" class="grid lg:grid-cols-2 gap-16 items-center scroll-mt-20">
-                        <div class="reveal">
-                            <span class="text-red-400 font-bold text-sm uppercase tracking-widest mb-2 block">Telemedicina & Clínicas</span>
-                            <h2 class="text-3xl lg:text-4xl font-black text-white mb-6">Você Bem <span class="text-red-400">Saúde</span></h2>
-                            <p class="text-blue-100/80 text-lg mb-8">Benefício válido para titulares, pais, filhos (até 30 anos) e cônjuges. Cuide da sua família com valores acessíveis.</p>
-                            
-                            <div class="glass-card rounded-2xl p-6 border-l-red-400 border-l-[4px]">
-                                <h4 class="text-white font-bold mb-4 flex items-center gap-2">
-                                    <i data-lucide="smartphone" class="w-5 h-5 text-red-400"></i> App Tem Saúde Digital
-                                </h4>
-                                <ol class="space-y-4 text-sm text-gray-300">
-                                    <li class="flex gap-3"><span class="font-bold text-red-400">1.</span> Baixe o app e faça login.</li>
-                                    <li class="flex gap-3"><span class="font-bold text-red-400">2.</span> Escolha consulta ou exame.</li>
-                                    <li class="flex gap-3"><span class="font-bold text-red-400">3.</span> Agende especialidade e horário.</li>
-                                    <li class="flex gap-3"><span class="font-bold text-red-400">4.</span> Confirme no seu e-mail!</li>
-                                </ol>
-                            </div>
-                        </div>
-                        <div class="reveal group h-full">
-                            <div class="bg-gradient-to-br from-red-500/10 to-transparent border border-red-500/20 rounded-3xl p-8 h-full shadow-[0_0_30px_rgba(248,113,113,0.05)] group-hover:border-red-500/40 transition-colors">
-                                <h3 class="text-white font-bold text-xl mb-6">Canais de Atendimento</h3>
-                                <div class="space-y-4">
-                                    <div class="bg-black/40 backdrop-blur-md rounded-xl p-4 flex items-center gap-4 border border-white/5 hover:bg-black/60 transition-colors">
-                                        <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center shrink-0">
-                                            <i data-lucide="phone" class="w-5 h-5 text-green-400"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-xs text-gray-400">Capitais / Regiões Metropolitanas</p>
-                                            <p class="text-xl font-bold text-white tracking-wide">0800 836 8836</p>
-                                        </div>
-                                    </div>
-                                    <a href="https://wa.me/5544997187738" target="_blank" class="bg-black/40 backdrop-blur-md rounded-xl p-4 flex items-center gap-4 border border-white/5 hover:bg-black/60 transition-colors group/btn">
-                                        <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center shrink-0 group-hover/btn:scale-110 transition-transform">
-                                            <i data-lucide="message-circle" class="w-5 h-5 text-green-400"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-xs text-gray-400">WhatsApp</p>
-                                            <p class="text-xl font-bold text-white tracking-wide">(44) 99718-7738</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Educação -->
-                    <div id="educacao" class="grid lg:grid-cols-2 gap-16 items-center scroll-mt-20">
-                        <div class="order-2 lg:order-1 reveal">
-                            <div class="relative w-full h-[400px] rounded-3xl bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-blue-500/30 overflow-hidden flex items-center justify-center shadow-[0_0_40px_rgba(59,130,246,0.1)] group">
-                                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/20 via-transparent to-transparent opacity-50"></div>
-                                <div class="relative z-10 text-center transform group-hover:scale-110 transition-transform duration-500">
-                                    <div class="text-[8rem] font-black text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-purple-400 leading-none drop-shadow-2xl">80%</div>
-                                    <div class="text-2xl font-bold text-white uppercase tracking-widest mt-2">de Desconto</div>
-                                    <div class="text-blue-200 mt-2">Plataforma i9class</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="order-1 lg:order-2 reveal">
-                            <span class="text-blue-400 font-bold text-sm uppercase tracking-widest mb-2 block">Capacitação</span>
-                            <h2 class="text-3xl lg:text-4xl font-black text-white mb-6">Você Bem <span class="text-blue-400">Educação</span></h2>
-                            <p class="text-blue-100/80 text-lg mb-8">Invista no seu futuro ou no futuro de quem você ama com condições super exclusivas.</p>
-                            
-                            <ol class="space-y-4">
-                                <li class="flex items-center gap-4 bg-white/5 border border-white/5 p-4 rounded-2xl hover:bg-white/10 transition-colors">
-                                    <div class="w-10 h-10 rounded-full bg-blue-500 text-white font-black flex items-center justify-center shrink-0">1</div>
-                                    <p class="text-gray-200">Acesse a plataforma <a href="#" class="text-blue-400 hover:text-blue-300 underline font-medium">i9class.com.br</a></p>
-                                </li>
-                                <li class="flex items-center gap-4 bg-white/5 border border-white/5 p-4 rounded-2xl hover:bg-white/10 transition-colors">
-                                    <div class="w-10 h-10 rounded-full bg-blue-500 text-white font-black flex items-center justify-center shrink-0">2</div>
-                                    <p class="text-gray-200">Escolha seu curso ou combo ideal</p>
-                                </li>
-                                <li class="flex items-center gap-4 bg-white/5 border border-white/5 p-4 rounded-2xl hover:bg-white/10 transition-colors">
-                                    <div class="w-10 h-10 rounded-full bg-blue-500 text-white font-black flex items-center justify-center shrink-0">3</div>
-                                    <p class="text-gray-200">Informe o estudante e aproveite!</p>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- Redes Sociais -->
-            <section id="redes" class="py-24 relative z-10 border-t border-brand-accent/10 bg-[#050814]/80">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-                    <span class="text-brand-accent font-bold text-sm uppercase tracking-widest mb-2 block">Siga-nos</span>
-                    <h2 class="text-3xl lg:text-4xl font-black text-white mb-12">Nossas <span class="text-brand-accent">Redes Sociais</span></h2>
-                    
-                    <div class="flex flex-wrap items-center justify-center gap-6">
-                        <a href="https://www.instagram.com/cartaoamigo23?igsh=MTFpYTlla3czM3B3dg==" target="_blank" class="flex items-center gap-3 px-8 py-4 glass-card rounded-2xl hover:scale-110 transition-transform group shadow-[0_0_20px_rgba(251,191,36,0.1)]">
-                            <i data-lucide="instagram" class="w-8 h-8 text-[#E1306C] group-hover:drop-shadow-[0_0_10px_#E1306C]"></i>
-                            <span class="text-white font-bold text-lg">Instagram</span>
-                        </a>
-                        <a href="https://www.facebook.com/share/18RDnRvZzq/" target="_blank" class="flex items-center gap-3 px-8 py-4 glass-card rounded-2xl hover:scale-110 transition-transform group shadow-[0_0_20px_rgba(251,191,36,0.1)]">
-                            <i data-lucide="facebook" class="w-8 h-8 text-[#1877F2] group-hover:drop-shadow-[0_0_10px_#1877F2]"></i>
-                            <span class="text-white font-bold text-lg">Facebook</span>
-                        </a>
-                        <a href="https://www.tiktok.com/@carto.amigo?_r=1&_t=ZS-94kVmCpWsOz" target="_blank" class="flex items-center gap-3 px-8 py-4 glass-card rounded-2xl hover:scale-110 transition-transform group shadow-[0_0_20px_rgba(251,191,36,0.1)]">
-                            <i data-lucide="music" class="w-8 h-8 text-[#00f2fe] group-hover:drop-shadow-[0_0_10px_#00f2fe]"></i>
-                            <span class="text-white font-bold text-lg">TikTok</span>
-                        </a>
-                        <a href="https://kwai-video.com/u/@cartaoamigo23/OsiCyJQ2" target="_blank" class="flex items-center gap-3 px-8 py-4 glass-card rounded-2xl hover:scale-110 transition-transform group shadow-[0_0_20px_rgba(251,191,36,0.1)]">
-                            <i data-lucide="video" class="w-8 h-8 text-[#FF6C00] group-hover:drop-shadow-[0_0_10px_#FF6C00]"></i>
-                            <span class="text-white font-bold text-lg">Kwai</span>
-                        </a>
-                        <a href="https://x.com/CartaoAmigo23" target="_blank" class="flex items-center gap-3 px-8 py-4 glass-card rounded-2xl hover:scale-110 transition-transform group shadow-[0_0_20px_rgba(251,191,36,0.1)]">
-                            <i data-lucide="twitter" class="w-8 h-8 text-[#1DA1F2] group-hover:drop-shadow-[0_0_10px_#1DA1F2]"></i>
-                            <span class="text-white font-bold text-lg">X (Twitter)</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CTA Final -->
-            <section class="py-24 relative overflow-hidden">
-                <div class="absolute inset-0 bg-brand-accent/5"></div>
-                <!-- Abstract lines -->
-                <div class="absolute w-full h-full inset-0 pointer-events-none opacity-20" style="background-image: linear-gradient(rgba(251,191,36,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(251,191,36,0.2) 1px, transparent 1px); background-size: 40px 40px; transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);"></div>
-                
-                <div class="max-w-4xl mx-auto px-4 relative z-10 text-center reveal">
-                    <h2 class="text-4xl md:text-5xl font-black text-white mb-6">Pronto para ter o seu?</h2>
-                    <p class="text-xl text-blue-200/80 mb-10 max-w-2xl mx-auto">Solicite agora o Cartão +amigo e revolucione o seu poder de compra com segurança e estilo.</p>
-                    
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                        <a href="tel:40901730" class="flex flex-col items-center justify-center w-full sm:w-auto px-8 py-3 bg-brand-accent hover:bg-yellow-300 text-black rounded-full transition-all duration-300 shadow-[0_0_40px_rgba(251,191,36,0.4)] hover:shadow-[0_0_60px_rgba(251,191,36,0.6)] hover:scale-105">
-                            <span class="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-0.5">Central do Cartão</span>
-                            <div class="flex items-center gap-2 font-black text-xl">
-                                <i data-lucide="phone" class="w-5 h-5"></i>
-                                4090-1730
-                            </div>
-                        </a>
-                        <a href="https://wa.me/5544997187738" target="_blank" class="flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 bg-[#25D366]/20 border border-[#25D366]/50 hover:bg-[#25D366]/30 text-white font-bold text-lg rounded-full transition-all duration-300">
-                            <i data-lucide="message-circle" class="w-6 h-6 text-[#25D366]"></i>
-                            Chamar no Zap
-                        </a>
-                    </div>
-                    
-                    <div class="mt-12 flex items-center justify-center gap-2 text-sm text-gray-400">
-                        <i data-lucide="info" class="w-4 h-4"></i>
-                        <span>Melhor dia de compra: 8 dias antes do vencimento. *Sujeito à análise de crédito.</span>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="border-t border-white/10 bg-black/50 backdrop-blur-lg pt-16 pb-8 z-10">
-            <div class="max-w-7xl mx-auto px-4 lg:px-8">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12 text-center md:text-left">
-                    <div>
-                        <a href="#" class="flex items-center justify-center md:justify-start gap-1 mb-2">
-                            <span class="text-xl font-bold text-white">Cartão</span>
-                            <span class="text-xl font-bold text-brand-accent">+amigo</span>
-                            <span class="text-xl">💛</span>
-                        </a>
-                        <p class="text-sm text-gray-400">Um amigo para todas as horas.</p>
-                    </div>
-                    
-                    <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-black transition-colors">
-                            <i data-lucide="instagram" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-black transition-colors">
-                            <i data-lucide="globe" class="w-5 h-5"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="text-center border-t border-white/10 pt-8 text-xs text-gray-500">
-                    <p>&copy; 2026 Cartão +amigo | Afinz. Todos os direitos reservados. Landing Page by AuraHome.</p>
-                </div>
-            </div>
-        </footer>
+    <div class="flex flex-col items-center gap-2">
+     <i data-lucide="shield-check" class="w-6 h-6 gold"></i>
+     <p data-template-id="benefit-2" class="canva-text text-xs uppercase tracking-widest text-neutral-300"></p>
     </div>
+    <div class="flex flex-col items-center gap-2">
+     <i data-lucide="credit-card" class="w-6 h-6 gold"></i>
+     <p data-template-id="benefit-3" class="canva-text text-xs uppercase tracking-widest text-neutral-300"></p>
+    </div>
+    <div class="flex flex-col items-center gap-2">
+     <i data-lucide="repeat" class="w-6 h-6 gold"></i>
+     <p data-template-id="benefit-4" class="canva-text text-xs uppercase tracking-widest text-neutral-300"></p>
+    </div>
+   </div>
+  </section><!-- CATALOG SECTION -->
+  <section id="catalog" class="category-section max-w-7xl mx-auto px-4 py-16">
+   <h2 data-template-id="catalog-title" class="canva-text font-display text-center mb-12 gold"></h2>
+   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"><!-- Tênis -->
+    <div class="catalog-card relative rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900" data-catalog="tenis" data-has-gender="true">
+     <div class="aspect-square flex items-center justify-center p-4">
+      <i data-lucide="footprints" class="w-12 h-12 gold"></i>
+     </div>
+     <div class="p-3 text-center border-t border-neutral-800">
+      <p data-template-id="catalog-tenis-label" class="canva-text text-sm uppercase tracking-widest"></p>
+     </div>
+     <div class="gender-overlay absolute inset-0 bg-black/90 flex flex-col items-center justify-center gap-3 rounded-xl">
+      <p class="text-neutral-400 text-xs uppercase tracking-widest mb-2">Escolha:</p><button class="gender-btn w-36 py-2 border border-gold text-gold rounded-lg text-sm uppercase tracking-widest hover:bg-gold hover:text-black transition" data-target="tenis_masculino">Masculino</button> <button class="gender-btn w-36 py-2 border border-gold text-gold rounded-lg text-sm uppercase tracking-widest hover:bg-gold hover:text-black transition" data-target="tenis_feminino">Feminino</button>
+     </div>
+    </div><!-- Camisas -->
+    <div class="catalog-card relative rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900" data-catalog="camisas" data-has-gender="true">
+     <div class="aspect-square flex items-center justify-center p-4">
+      <i data-lucide="shirt" class="w-12 h-12 gold"></i>
+     </div>
+     <div class="p-3 text-center border-t border-neutral-800">
+      <p data-template-id="catalog-camisas-label" class="canva-text text-sm uppercase tracking-widest"></p>
+     </div>
+     <div class="gender-overlay absolute inset-0 bg-black/90 flex flex-col items-center justify-center gap-3 rounded-xl">
+      <p class="text-neutral-400 text-xs uppercase tracking-widest mb-2">Escolha:</p><button class="gender-btn w-36 py-2 border border-gold text-gold rounded-lg text-sm uppercase tracking-widest hover:bg-gold hover:text-black transition" data-target="camisas_masculino">Masculino</button> <button class="gender-btn w-36 py-2 border border-gold text-gold rounded-lg text-sm uppercase tracking-widest hover:bg-gold hover:text-black transition" data-target="camisas_feminino">Feminino</button>
+     </div>
+    </div><!-- Relógios -->
+    <div class="catalog-card relative rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900" data-catalog="relogios" data-has-gender="false">
+     <div class="aspect-square flex items-center justify-center p-4">
+      <i data-lucide="watch" class="w-12 h-12 gold"></i>
+     </div>
+     <div class="p-3 text-center border-t border-neutral-800">
+      <p data-template-id="catalog-relogios-label" class="canva-text text-sm uppercase tracking-widest"></p>
+     </div>
+    </div><!-- Perfumes -->
+    <div class="catalog-card relative rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900" data-catalog="perfumes" data-has-gender="true">
+     <div class="aspect-square flex items-center justify-center p-4">
+      <i data-lucide="spray-can" class="w-12 h-12 gold"></i>
+     </div>
+     <div class="p-3 text-center border-t border-neutral-800">
+      <p data-template-id="catalog-perfumes-label" class="canva-text text-sm uppercase tracking-widest"></p>
+     </div>
+     <div class="gender-overlay absolute inset-0 bg-black/90 flex flex-col items-center justify-center gap-3 rounded-xl">
+      <p class="text-neutral-400 text-xs uppercase tracking-widest mb-2">Escolha:</p><button class="gender-btn w-36 py-2 border border-gold text-gold rounded-lg text-sm uppercase tracking-widest hover:bg-gold hover:text-black transition" data-target="perfume_masc">Masculino</button> <button class="gender-btn w-36 py-2 border border-gold text-gold rounded-lg text-sm uppercase tracking-widest hover:bg-gold hover:text-black transition" data-target="perfume_fem">Feminino</button>
+     </div>
+    </div><!-- Vestidos -->
+    <div class="catalog-card relative rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900" data-catalog="vestidos" data-has-gender="false">
+     <div class="aspect-square flex items-center justify-center p-4">
+      <i data-lucide="sparkles" class="w-12 h-12 gold"></i>
+     </div>
+     <div class="p-3 text-center border-t border-neutral-800">
+      <p data-template-id="catalog-vestidos-label" class="canva-text text-sm uppercase tracking-widest"></p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <main id="products" class="max-w-7xl mx-auto px-4 py-16">
+   <h2 data-template-id="collection-title" class="canva-text font-display text-center mb-16 gold"></h2><!-- Tênis Masculinos -->
+   <section class="category-section mb-16" data-cat-section="tenis_masculino">
+    <h3 data-template-id="cat-tenis-masc-title" class="canva-text font-display gold mb-8 text-center"></h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="tenis_masculino" data-price="179.99" data-name="Lacoste Branco Azul">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="tenis-masc-1-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="tenis-masc-1-name" class="canva-text font-medium"></p>
+       <p data-template-id="tenis-masc-1-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="tenis_masculino" data-price="179.99" data-name="Nike Air Force Branco Preto">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="tenis-masc-2-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="tenis-masc-2-name" class="canva-text font-medium"></p>
+       <p data-template-id="tenis-masc-2-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="tenis_masculino" data-price="179.99" data-name="Vans Old Skool Preto Branco">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="tenis-masc-3-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="tenis-masc-3-name" class="canva-text font-medium"></p>
+       <p data-template-id="tenis-masc-3-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="tenis_masculino" data-price="179.99" data-name="Nike Air Force Bege Marrom">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="tenis-masc-4-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="tenis-masc-4-name" class="canva-text font-medium"></p>
+       <p data-template-id="tenis-masc-4-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="tenis_masculino" data-price="179.99" data-name="Air Jordan Preto Cinza">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="tenis-masc-5-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="tenis-masc-5-name" class="canva-text font-medium"></p>
+       <p data-template-id="tenis-masc-5-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="tenis_masculino" data-price="179.99" data-name="Nike Air Max Plus Preto">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="tenis-masc-6-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="tenis-masc-6-name" class="canva-text font-medium"></p>
+       <p data-template-id="tenis-masc-6-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Camisas Masculinas -->
+   <section class="category-section mb-16" data-cat-section="camisas_masculino">
+    <h3 data-template-id="cat-camisas-masc-title" class="canva-text font-display gold mb-8 text-center"></h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="camisas_masculino" data-price="119.99" data-name="Camisa Polo Azul Claro">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="camisa-masc-1-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="camisa-masc-1-name" class="canva-text font-medium"></p>
+       <p data-template-id="camisa-masc-1-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="camisas_masculino" data-price="119.99" data-name="Camisa Lacoste Branca">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="camisa-masc-2-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="camisa-masc-2-name" class="canva-text font-medium"></p>
+       <p data-template-id="camisa-masc-2-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Relógios -->
+   <section class="category-section mb-16" data-cat-section="relogios">
+    <h3 data-template-id="cat-relogios-title" class="canva-text font-display gold mb-8 text-center"></h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="relogios" data-price="99.99" data-name="Relógio Dourado Quadrado">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="watch-1-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="watch-1-name" class="canva-text font-medium"></p>
+       <p data-template-id="watch-1-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="relogios" data-price="99.99" data-name="Relógio Cronógrafo Branco">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="watch-2-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="watch-2-name" class="canva-text font-medium"></p>
+       <p data-template-id="watch-2-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Perfumes Masculinos -->
+   <section class="category-section mb-16" data-cat-section="perfume_masc">
+    <h3 data-template-id="cat-perfumes-title" class="canva-text font-display gold mb-8 text-center"></h3>
+    <h4 data-template-id="cat-perfumes-masc-title" class="canva-text font-display gold mb-6 text-center"></h4>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="perfume" data-price="99.99" data-name="Brand Collection No 214">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="perf-m1-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="perf-m1-name" class="canva-text font-medium"></p>
+       <p data-template-id="perf-m1-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="perfume" data-price="99.99" data-name="Are You On The List">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="perf-m2-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="perf-m2-name" class="canva-text font-medium"></p>
+       <p data-template-id="perf-m2-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="perfume" data-price="99.99" data-name="Lacoste L1212 Blanc Pure">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="perf-m3-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="perf-m3-name" class="canva-text font-medium"></p>
+       <p data-template-id="perf-m3-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="perfume" data-price="99.99" data-name="Ferrari Black">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="perf-m4-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="perf-m4-name" class="canva-text font-medium"></p>
+       <p data-template-id="perf-m4-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Perfumes Femininos -->
+   <section class="category-section mb-16" data-cat-section="perfume_fem">
+    <h4 data-template-id="cat-perfumes-fem-title" class="canva-text font-display gold mb-8 text-center"></h4>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="perfume" data-price="99.99" data-name="Brand Collection No 36">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="perf-f-36-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="perf-f-36-name" class="canva-text font-medium"></p>
+       <p data-template-id="perf-f-36-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="perfume" data-price="99.99" data-name="Brand Collection No 24">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="perf-f-24-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="perf-f-24-name" class="canva-text font-medium"></p>
+       <p data-template-id="perf-f-24-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="perfume" data-price="99.99" data-name="Brand Collection No 087">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="perf-f-087-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="perf-f-087-name" class="canva-text font-medium"></p>
+       <p data-template-id="perf-f-087-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Vestidos -->
+   <section class="category-section mb-16" data-cat-section="vestidos">
+    <h3 data-template-id="cat-vestidos-title" class="canva-text font-display gold mb-8 text-center"></h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="vestidos" data-price="139.99" data-name="Vestido Preto Flores">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="vestido-1-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="vestido-1-name" class="canva-text font-medium"></p>
+       <p data-template-id="vestido-1-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+     <div class="product-card bg-neutral-900 rounded-xl overflow-hidden" data-cat="vestidos" data-price="139.99" data-name="Vestido Vermelho Elegante">
+      <div class="aspect-square overflow-hidden">
+       <img data-template-id="vestido-2-img" class="canva-image w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-4">
+       <p data-template-id="vestido-2-name" class="canva-text font-medium"></p>
+       <p data-template-id="vestido-2-price" class="canva-text gold font-bold mt-1"></p><button class="add-to-cart-btn w-full mt-3 border border-gold text-gold py-2 rounded-lg uppercase text-xs tracking-widest hover:bg-gold hover:text-black transition">Adicionar</button>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main><!-- Testimonials -->
+  <section data-template-id="testimonials-section" class="canva-section py-16 border-t border-neutral-800">
+   <div class="max-w-5xl mx-auto px-4">
+    <h2 data-template-id="testimonials-title" class="canva-text font-display gold text-center mb-12"></h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+     <div data-template-id="testimonial-1" class="canva-card bg-neutral-900 rounded-xl p-6 border border-neutral-800">
+      <div class="flex gap-1 mb-3">
+       <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
+      </div>
+      <p data-template-id="testimonial-1-text" class="canva-text text-neutral-300 text-sm italic mb-3"></p>
+      <p data-template-id="testimonial-1-author" class="canva-text gold text-sm font-bold"></p>
+     </div>
+     <div data-template-id="testimonial-2" class="canva-card bg-neutral-900 rounded-xl p-6 border border-neutral-800">
+      <div class="flex gap-1 mb-3">
+       <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
+      </div>
+      <p data-template-id="testimonial-2-text" class="canva-text text-neutral-300 text-sm italic mb-3"></p>
+      <p data-template-id="testimonial-2-author" class="canva-text gold text-sm font-bold"></p>
+     </div>
+     <div data-template-id="testimonial-3" class="canva-card bg-neutral-900 rounded-xl p-6 border border-neutral-800">
+      <div class="flex gap-1 mb-3">
+       <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
+      </div>
+      <p data-template-id="testimonial-3-text" class="canva-text text-neutral-300 text-sm italic mb-3"></p>
+      <p data-template-id="testimonial-3-author" class="canva-text gold text-sm font-bold"></p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Newsletter -->
+  <section data-template-id="newsletter-section" class="canva-section py-16 border-t border-neutral-800">
+   <div class="max-w-xl mx-auto px-4 text-center">
+    <h2 data-template-id="newsletter-title" class="canva-text font-display gold mb-3"></h2>
+    <p data-template-id="newsletter-subtitle" class="canva-text text-neutral-400 mb-6"></p>
+    <form id="newsletter-form" class="flex gap-3 flex-col sm:flex-row"><input data-template-id="newsletter-input" type="email" required class="flex-1 bg-neutral-900 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none"> <button data-template-id="newsletter-btn" type="submit" class="canva-button bg-gold text-black font-bold px-6 py-3 rounded-lg uppercase tracking-widest text-sm hover:brightness-110 transition"></button>
+    </form>
+    <p id="newsletter-success" class="text-green-400 text-sm mt-3 hidden">✓ Inscrito com sucesso!</p>
+   </div>
+  </section><!-- Promo Banner -->
+  <div data-template-id="promo-banner" class="canva-banner bg-gold text-black py-4 text-center">
+   <p data-template-id="promo-message" class="canva-text font-bold text-sm uppercase tracking-widest"></p>
+  </div><!-- Footer -->
+  <footer data-template-id="footer" class="canva-footer border-t border-neutral-800 py-12">
+   <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
+     <div>
+      <h4 data-template-id="social-title" class="canva-text font-display gold mb-4"></h4>
+      <div class="flex gap-4 justify-center md:justify-start"><a data-template-id="social-instagram" href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="canva-link w-10 h-10 rounded-full border border-gold flex items-center justify-center gold hover:bg-gold hover:text-black transition" aria-label="Instagram"><i data-lucide="instagram" class="w-5 h-5"></i></a> <a data-template-id="social-facebook" href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="canva-link w-10 h-10 rounded-full border border-gold flex items-center justify-center gold hover:bg-gold hover:text-black transition" aria-label="Facebook"><i data-lucide="facebook" class="w-5 h-5"></i></a> <a data-template-id="social-whatsapp" href="https://wa.me/5544997187738?text=Olá! Gostaria de conhecer mais sobre os produtos NPS PRIMEX." target="_blank" rel="noopener noreferrer" class="canva-link w-10 h-10 rounded-full border border-gold flex items-center justify-center gold hover:bg-gold hover:text-black transition" aria-label="WhatsApp"><i data-lucide="message-circle" class="w-5 h-5"></i></a> <a data-template-id="social-tiktok" href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="canva-link w-10 h-10 rounded-full border border-gold flex items-center justify-center gold hover:bg-gold hover:text-black transition" aria-label="TikTok"><i data-lucide="music" class="w-5 h-5"></i></a>
+      </div>
+      <p data-template-id="whatsapp-label" class="canva-text text-neutral-400 text-xs mt-4"></p>
+     </div>
+     <div class="text-center">
+      <h4 data-template-id="contact-title" class="canva-text font-display gold mb-4"></h4>
+      <p data-template-id="contact-whatsapp" class="canva-text text-neutral-300 font-bold text-lg"></p>
+      <p data-template-id="contact-hours" class="canva-text text-neutral-500 text-sm mt-2"></p>
+     </div>
+     <div class="text-center md:text-right">
+      <h4 data-template-id="about-title" class="canva-text font-display gold mb-4"></h4>
+      <p data-template-id="about-text" class="canva-text text-neutral-500 text-sm"></p>
+     </div>
+    </div>
+    <div class="border-t border-neutral-800 pt-8 text-center">
+     <p data-template-id="footer-text" class="canva-text text-neutral-500 text-sm"></p>
+    </div>
+   </div>
+  </footer><button id="back-to-top" class="fixed bottom-6 right-6 z-30 w-12 h-12 rounded-full bg-gold text-black flex items-center justify-center shadow-lg hover:brightness-110 transition" aria-label="Voltar ao topo"><i data-lucide="chevron-up" class="w-6 h-6"></i></button> <a href="https://wa.me/5544997187738?text=Olá! Gostaria de conhecer mais sobre os produtos NPS PRIMEX." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 left-6 z-30 w-14 h-14 rounded-full bg-green-500 text-white flex items-center justify-center shadow-lg hover:bg-green-600 transition" aria-label="Conversar no WhatsApp"><i data-lucide="message-circle" class="w-7 h-7"></i></a> <!-- Cart Overlay -->
+  <div id="cart-overlay" class="overlay fixed inset-0 bg-black/60 z-50"></div><!-- Cart Sidebar -->
+  <aside id="cart-sidebar" class="cart-sidebar fixed top-0 right-0 h-full w-full max-w-md bg-neutral-950 border-l border-neutral-800 z-50 flex flex-col">
+   <div class="flex items-center justify-between p-5 border-b border-neutral-800">
+    <h3 data-template-id="cart-title" class="canva-text font-display gold"></h3><button id="cart-close" aria-label="Fechar carrinho"><i data-lucide="x" class="w-6 h-6 text-neutral-400"></i></button>
+   </div>
+   <div id="cart-items" class="flex-1 overflow-y-auto p-5 space-y-4"></div>
+   <div id="cart-empty" class="flex-1 flex items-center justify-center">
+    <p data-template-id="cart-empty-text" class="canva-text text-neutral-500"></p>
+   </div>
+   <div id="cart-footer" class="border-t border-neutral-800 p-5 hidden">
+    <div class="flex justify-between mb-4">
+     <span class="text-neutral-400 uppercase text-sm tracking-widest">Total</span><span id="cart-total" class="gold font-bold text-lg"></span>
+    </div><button id="checkout-btn" class="w-full bg-gold text-black font-bold py-3 rounded-lg uppercase tracking-widest text-sm hover:brightness-110 transition">Finalizar Compra</button>
+   </div>
+  </aside><!-- Checkout Modal -->
+  <div id="checkout-modal" class="fixed inset-0 z-[60] flex items-center justify-center p-4 hidden">
+   <div class="absolute inset-0 bg-black/70" id="checkout-overlay"></div>
+   <div class="relative bg-neutral-950 border border-neutral-800 rounded-2xl w-full max-w-lg p-6">
+    <div class="flex items-center justify-between mb-6">
+     <h3 data-template-id="checkout-title" class="canva-text font-display gold"></h3><button id="checkout-close"><i data-lucide="x" class="w-5 h-5 text-neutral-400"></i></button>
+    </div>
+    <div class="inline-block bg-yellow-900/30 border border-yellow-700/40 text-yellow-400 text-xs px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
+     ⚡ Demo
+    </div>
+    <form id="checkout-form" class="space-y-4">
+     <div>
+      <label data-template-id="label-name" class="canva-text block text-sm text-neutral-400 mb-1" for="c-name"></label><input id="c-name" type="text" required class="w-full bg-neutral-900 border border-neutral-700 rounded-lg px-4 py-2.5 text-white focus:border-gold focus:outline-none">
+     </div>
+     <div>
+      <label data-template-id="label-email" class="canva-text block text-sm text-neutral-400 mb-1" for="c-email"></label><input id="c-email" type="email" required class="w-full bg-neutral-900 border border-neutral-700 rounded-lg px-4 py-2.5 text-white focus:border-gold focus:outline-none">
+     </div>
+     <div>
+      <label data-template-id="label-address" class="canva-text block text-sm text-neutral-400 mb-1" for="c-addr"></label><input id="c-addr" type="text" required class="w-full bg-neutral-900 border border-neutral-700 rounded-lg px-4 py-2.5 text-white focus:border-gold focus:outline-none">
+     </div><button data-template-id="checkout-submit" type="submit" class="canva-button w-full bg-gold text-black font-bold py-3 rounded-lg uppercase tracking-widest text-sm hover:brightness-110 transition mt-2"></button>
+    </form>
+    <div id="checkout-success" class="hidden text-center py-8">
+     <div class="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
+      <i data-lucide="check" class="w-8 h-8 gold"></i>
+     </div>
+     <h4 data-template-id="success-title" class="canva-text font-display gold text-xl mb-2"></h4>
+     <p data-template-id="success-text" class="canva-text text-neutral-400"></p>
+    </div>
+   </div>
+  </div>
+  <script src="/_sdk/editing_sdk.js"></script>
+  <script>
+  let cart = [];
+  const cartSidebar = document.getElementById('cart-sidebar');
+  const cartOverlay = document.getElementById('cart-overlay');
+  const cartItems = document.getElementById('cart-items');
+  const cartEmpty = document.getElementById('cart-empty');
+  const cartFooter = document.getElementById('cart-footer');
+  const cartTotal = document.getElementById('cart-total');
+  const cartCountEl = document.getElementById('cart-count');
+  const checkoutModal = document.getElementById('checkout-modal');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+  const backToTop = document.getElementById('back-to-top');
 
-    <!-- Scripts for Logic & Animations -->
-    <script>
-        // Init Lucide Icons
-        lucide.createIcons();
+  // Mobile menu
+  document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+    mobileMenu.classList.add('open');
+    mobileMenuOverlay.classList.add('open');
+  });
+  mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    mobileMenuOverlay.classList.remove('open');
+  }
 
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+  // Back to top
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 600);
+  });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Cart
+  function openCart() { cartSidebar.classList.add('open'); cartOverlay.classList.add('open'); }
+  function closeCart() { cartSidebar.classList.remove('open'); cartOverlay.classList.remove('open'); }
+  document.getElementById('cart-toggle').addEventListener('click', openCart);
+  document.getElementById('cart-close').addEventListener('click', closeCart);
+  cartOverlay.addEventListener('click', closeCart);
+
+  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.product-card');
+      const name = card.dataset.name;
+      const price = parseFloat(card.dataset.price);
+      const existing = cart.find(i => i.name === name);
+      if (existing) { existing.qty++; } else { cart.push({ name, price, qty: 1 }); }
+      renderCart();
+      openCart();
+    });
+  });
+
+  function renderCart() {
+    const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    const count = cart.reduce((s, i) => s + i.qty, 0);
+    cartCountEl.textContent = count;
+    cartCountEl.classList.toggle('hidden', count === 0);
+    cartEmpty.classList.toggle('hidden', cart.length > 0);
+    cartFooter.classList.toggle('hidden', cart.length === 0);
+    cartTotal.textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
+    cartItems.innerHTML = '';
+    cart.forEach((item, idx) => {
+      const div = document.createElement('div');
+      div.className = 'flex items-center justify-between bg-neutral-900 rounded-lg p-3';
+      div.innerHTML = `<div class="flex-1 min-w-0"><p class="text-sm font-medium truncate">${item.name}</p><p class="text-xs gold">R$ ${item.price.toFixed(2).replace('.', ',')}</p></div><div class="flex items-center gap-2 ml-3"><button class="qty-btn w-7 h-7 rounded-full border border-neutral-700 flex items-center justify-center text-sm hover:border-gold" data-idx="${idx}" data-dir="-1">−</button><span class="text-sm w-6 text-center">${item.qty}</span><button class="qty-btn w-7 h-7 rounded-full border border-neutral-700 flex items-center justify-center text-sm hover:border-gold" data-idx="${idx}" data-dir="1">+</button><button class="rm-btn ml-1 text-neutral-500 hover:text-red-400" data-idx="${idx}"><i data-lucide="trash-2" class="w-4 h-4"></i></button></div>`;
+      cartItems.appendChild(div);
+    });
+    lucide.createIcons();
+    cartItems.querySelectorAll('.qty-btn').forEach(b => b.addEventListener('click', () => {
+      const i = parseInt(b.dataset.idx);
+      cart[i].qty += parseInt(b.dataset.dir);
+      if (cart[i].qty < 1) cart.splice(i, 1);
+      renderCart();
+    }));
+    cartItems.querySelectorAll('.rm-btn').forEach(b => b.addEventListener('click', () => {
+      cart.splice(parseInt(b.dataset.idx), 1);
+      renderCart();
+    }));
+  }
+
+  // Checkout
+  document.getElementById('checkout-btn').addEventListener('click', () => {
+    closeCart();
+    checkoutModal.classList.remove('hidden');
+    document.getElementById('checkout-form').classList.remove('hidden');
+    document.getElementById('checkout-success').classList.add('hidden');
+  });
+  document.getElementById('checkout-close').addEventListener('click', () => checkoutModal.classList.add('hidden'));
+  document.getElementById('checkout-overlay').addEventListener('click', () => checkoutModal.classList.add('hidden'));
+  document.getElementById('checkout-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('checkout-form').classList.add('hidden');
+    document.getElementById('checkout-success').classList.remove('hidden');
+    cart = [];
+    renderCart();
+  });
+
+  // Newsletter
+  document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('newsletter-success').classList.remove('hidden');
+    e.target.reset();
+  });
+
+  // Catalog cards - gender selection
+  document.querySelectorAll('.catalog-card').forEach(card => {
+    const hasGender = card.dataset.hasGender === 'true';
+    const overlay = card.querySelector('.gender-overlay');
+
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.gender-btn')) return;
+      if (hasGender && overlay) {
+        // Close other overlays
+        document.querySelectorAll('.gender-overlay.active').forEach(o => {
+          if (o !== overlay) o.classList.remove('active');
         });
+        overlay.classList.toggle('active');
+      } else {
+        // Direct scroll for categories without gender
+        const cat = card.dataset.catalog;
+        const target = document.querySelector(`[data-cat-section="${cat}"]`);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
 
-        // Sticky Navbar effect modification on scroll
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add('shadow-[0_4px_30px_rgba(0,0,0,0.5)]');
-                navbar.classList.add('bg-[#0a0e2a]/80');
-            } else {
-                navbar.classList.remove('shadow-[0_4px_30px_rgba(0,0,0,0.5)]');
-                navbar.classList.remove('bg-[#0a0e2a]/80');
-            }
-        });
+  // Gender buttons scroll to section
+  document.querySelectorAll('.gender-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const target = btn.dataset.target;
+      const section = document.querySelector(`[data-cat-section="${target}"]`);
+      if (section) section.scrollIntoView({ behavior: 'smooth' });
+      // Close overlay
+      btn.closest('.gender-overlay').classList.remove('active');
+    });
+  });
 
-        // Intersection Observer for Scroll Reveal
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
+  // Close gender overlays on outside click
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.catalog-card')) {
+      document.querySelectorAll('.gender-overlay.active').forEach(o => o.classList.remove('active'));
+    }
+  });
 
-        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, revealOptions);
-
-        revealElements.forEach(el => {
-            revealOnScroll.observe(el);
-        });
-    </script>
-</body>
+  lucide.createIcons();
+  renderCart();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fcdefda46e65e5b',t:'MTc3ODk3MTc4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
